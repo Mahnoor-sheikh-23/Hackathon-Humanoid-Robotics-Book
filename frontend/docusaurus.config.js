@@ -15,12 +15,12 @@ const config = {
   url: 'https://mahnoor-sheikh-23.github.io', // Replace with your GitHub Pages URL
   // Set the /<baseUrl>/ path under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/Humanoid-robotics-book/', // This should match your GitHub repository name
+  baseUrl: '/Hackathon-Humanoid-Robotics-Book/', // This should match your GitHub repository name
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'Mahnoor-sheikh-23', // Replace with your GitHub organization/username
-  projectName: 'Humanoid-robotics-book', // Replace with your GitHub repository name
+  projectName: 'Hackathon-Humanoid-Robotics-Book', // Replace with your GitHub repository name
   trailingSlash: false, // For GitHub Pages, use false
 
   onBrokenLinks: 'throw',
