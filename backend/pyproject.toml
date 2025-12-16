@@ -1,17 +1,42 @@
-[tool.black]
-line-length = 88
-target-version = ['py310']
-include = '\.pyi?$'
-exclude = '''
-/(
-    \.git
-  | \.hg
-  | \.mypy_cache
-  | \.tox
-  | \.venv
-  | _build
-  | buck-out
-  | build
-  | dist
-)/
-'''
+[tool.poetry]
+name = "humanoid-robotics-rag-api"
+version = "0.1.0"
+description = "RAG API for Physical AI & Humanoid Robotics textbook"
+authors = ["Your Name <your.email@example.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+fastapi = "^0.104.1"
+uvicorn = "^0.24.0"
+python-dotenv = "^1.0.0"
+langchain = "^0.2.13"
+langchain-google-genai = "^1.0.1"
+langchain-qdrant = "^0.1.2"
+qdrant-client = "^1.8.0"
+pydantic = "^2.5.0"
+sqlalchemy = "^2.0.23"
+asyncpg = "^0.29.0"
+psycopg2-binary = "^2.9.9"
+python-multipart = "^0.0.6"
+tiktoken = "^0.5.2"
+unstructured = "^0.12.5"
+python-docx = "^1.1.0"
+pypdf = "^4.0.0"
+beautifulsoup4 = "^4.12.2"
+lxml = "^5.0.0"
+pandas = "^2.1.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.0"
+black = "^23.7.0"
+flake8 = "^6.0.0"
+mypy = "^1.4.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.uvicorn]
+host = "0.0.0.0"
+port = 8000
+reload = true
