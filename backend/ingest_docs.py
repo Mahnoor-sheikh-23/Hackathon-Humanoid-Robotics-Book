@@ -7,16 +7,17 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 from src.rag.document_processor import DocumentProcessor
 from src.rag.qdrant_client import QdrantClient
-from langchain_google_genai import GoogleGenerativeAIEmbeddings
+from langchain_openai import OpenAIEmbeddings
 
 def main():
     # Load environment variables
     load_dotenv()
 
     # Initialize components
-    embeddings = GoogleGenerativeAIEmbeddings(
-        model="models/embedding-001",
-        google_api_key=os.getenv("GEMINI_API_KEY")
+    embeddings = OpenAIEmbeddings(
+        model="text-embedding-3-small",  # OpenAI embedding model compatible with OpenRouter
+        openai_api_key=os.getenv("OPENROUTER_API_KEY"),
+        openai_api_base="https://openrouter.ai/api/v1"
     )
 
     qdrant_client = QdrantClient(

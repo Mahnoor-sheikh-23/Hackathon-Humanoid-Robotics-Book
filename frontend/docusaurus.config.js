@@ -46,7 +46,7 @@ const config = {
       ({
         docs: {
           sidebarPath: './sidebars.js',
-          routeBasePath: '/', // Set docs root to site root
+          routeBasePath: 'docs', // Changed from '/' to 'docs' to avoid conflict with homepage
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
@@ -69,15 +69,34 @@ const config = {
         title: 'Humanoid Robotics Book',
         logo: {
           alt: 'Humanoid Robotics Book Logo',
-          src: 'img/logo.png', // Updated to .png
+          src: 'img/logo.webp', // Updated to .png
           
         },
         items: [
           {
-            type: 'docSidebar',
-            sidebarId: 'tutorialSidebar',
+            to: '/',
+            label: 'Home',
             position: 'left',
-            label: 'Docs',
+          },
+          {
+            to: '/docs/module1-ros2/ch3_ros2_core',
+            label: 'Reading',
+            position: 'left',
+          },
+          {
+            to: '/blog',
+            label: 'Blog',
+            position: 'left',
+          },
+          {
+            to: '/docs/module1-ros2/ch3_ros2_core',
+            label: 'Books',
+            position: 'left',
+          },
+          {
+            to: '/about',
+            label: 'About',
+            position: 'left',
           },
           {
             href: 'https://github.com/Mahnoor-sheikh-23/Humanoid-robotics-book', // Link to your GitHub repo
@@ -90,35 +109,60 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'Docs',
+            title: 'Chapters',
             items: [
               {
                 label: 'Introduction',
-                to: '/',
+                to: '/docs/',
               },
               {
                 label: 'Module 1 - ROS 2',
-                to: 'module1-ros2/ch3_ros2_core',
+                to: '/docs/module1-ros2/ch3_ros2_core',
               },
               {
                 label: 'Module 2 - Digital Twin',
-                to: 'module2-digital-twin/ch7_gazebo_intro',
+                to: '/docs/module2-digital-twin/ch7_gazebo_intro',
               },
               {
                 label: 'Module 3 - NVIDIA Isaac',
-                to: 'module3-nvidia-isaac/ch10_isaac_sim',
+                to: '/docs/module3-nvidia-isaac/ch10_isaac_sim',
               },
               {
                 label: 'Module 4 - VLA Integration',
-                to: 'module4-vla/ch15_whisper_llm',
+                to: '/docs/module4-vla/ch15_whisper_llm',
               },
               {
                 label: 'Capstone Project',
-                to: 'capstone/ch18_integration',
+                to: '/docs/capstone/ch18_integration',
               },
               {
                 label: 'Appendices',
-                to: 'appendices/appA_hardware',
+                to: '/docs/appendices/appA_hardware',
+              },
+            ],
+          },
+          {
+            title: 'Resources',
+            items: [
+              {
+                label: 'Blog',
+                to: '/blog',
+              },
+              {
+                label: 'Tutorials',
+                to: '/tutorials',
+              },
+              {
+                label: 'Case Studies',
+                href: '#',
+              },
+              {
+                label: 'Research Papers',
+                to: '/research-papers',
+              },
+              {
+                label: 'Video Guides',
+                href: '#',
               },
             ],
           },
@@ -126,16 +170,24 @@ const config = {
             title: 'Community',
             items: [
               {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+                label: 'GitHub',
+                href: 'https://github.com/Mahnoor-sheikh-23/Humanoid-robotics-book',
               },
               {
                 label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
+                href: 'https://discord.gg/robotics',
+              },
+              {
+                label: 'LinkedIn',
+                href: 'https://linkedin.com/company/robotics-community',
               },
               {
                 label: 'Twitter',
-                href: 'https://twitter.com/docusaurus',
+                href: 'https://twitter.com/robotics',
+              },
+              {
+                label: 'Forum',
+                href: 'https://community.robotics-book.com',
               },
             ],
           },
@@ -143,8 +195,24 @@ const config = {
             title: 'More',
             items: [
               {
-                label: 'GitHub',
-                href: 'https://github.com/Mahnoor-sheikh-23/Humanoid-robotics-book',
+                label: 'About',
+                to: '/about',
+              },
+              {
+                label: 'Contact',
+                to: '/contact',
+              },
+              {
+                label: 'Privacy Policy',
+                to: '/privacy-policy',
+              },
+              {
+                label: 'Terms of Service',
+                to: '/terms-of-service',
+              },
+              {
+                label: 'Support',
+                to: '/support',
               },
             ],
           },

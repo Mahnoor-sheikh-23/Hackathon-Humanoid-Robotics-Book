@@ -126,7 +126,8 @@
   border: 1px solid #d1d5db;
   border-radius: 0.5rem;
   margin-right: 0.5rem;
-  font-size: 1rem;
+  font-size: 0.9rem;
+  color: rgb(22, 184, 205);
 }
 
 .chatbot-input-form input:focus {

@@ -6,7 +6,7 @@ from pydantic import BaseModel
 import logging
 from src.rag.document_processor import DocumentProcessor
 from src.rag.qdrant_client import QdrantClient
-from langchain_google_genai import ChatGoogleGenerativeAI, GoogleGenerativeAIEmbeddings
+from langchain_openai import ChatOpenAI
 from langchain.chains import RetrievalQA
 from langchain_core.prompts import PromptTemplate
 
@@ -35,10 +35,12 @@ logger = logging.getLogger(__name__)
 
 # Initialize components
 try:
-    # Initialize embeddings
-    embeddings = GoogleGenerativeAIEmbeddings(
-        model="models/embedding-001",
-        google_api_key=os.getenv("GEMINI_API_KEY")
+    # Initialize embeddings - using OpenAI compatible embeddings for OpenRouter
+    from langchain_openai import OpenAIEmbeddings
+    embeddings = OpenAIEmbeddings(
+        model="text-embedding-3-small",  # OpenAI embedding model compatible with OpenRouter
+        openai_api_key=os.getenv("OPENROUTER_API_KEY"),
+        openai_api_base="https://openrouter.ai/api/v1"
     )
 
     # Initialize Qdrant client
@@ -54,11 +56,14 @@ try:
         qdrant_client=qdrant_client
     )
 
-    # Initialize the language model
-    llm = ChatGoogleGenerativeAI(
-        model="gemini-pro",
-        google_api_key=os.getenv("GEMINI_API_KEY"),
-        temperature=0.7
+    # Initialize the language model with OpenRouter
+    from langchain_openai import ChatOpenAI
+    llm = ChatOpenAI(
+        model="openai/gpt-3.5-turbo",  # Using a more cost-effective model
+        openai_api_key=os.getenv("OPENROUTER_API_KEY"),
+        openai_api_base="https://openrouter.ai/api/v1",
+        temperature=0.7,
+        max_tokens=1024  # Limit the response tokens to control costs
     )
 
     logger.info("RAG components initialized successfully")

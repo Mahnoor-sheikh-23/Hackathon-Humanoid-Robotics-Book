@@ -54,17 +54,93 @@ class QdrantClient:
 
             if self.collection_name not in collection_names:
                 # Create collection with vector configuration
-                # The size will be determined by the embedding model (Google embeddings are 768-dim)
+                # Default to 1536 for OpenAI embeddings (text-embedding-3-small)
+                # For OpenAI text-embedding-3-small: 1536 dimensions
+                # For OpenAI text-embedding-3-large: 3072 dimensions
+                # For Google embeddings: typically 768 dimensions
+
+                # Determine embedding size based on the model being used
+                embedding_size = 1536  # Default for OpenAI text-embedding-3-small
+                if hasattr(self.embeddings, 'model'):
+                    model_name = getattr(self.embeddings, 'model', '').lower()
+                    if 'text-embedding-3-large' in model_name:
+                        embedding_size = 3072  # text-embedding-3-large
+                    elif 'text-embedding-3-small' in model_name:
+                        embedding_size = 1536  # text-embedding-3-small
+                    elif 'text-embedding-ada-002' in model_name:
+                        embedding_size = 1536  # text-embedding-ada-002
+                    else:
+                        embedding_size = 1536  # default for text-embedding-ada-002 or similar
+                elif hasattr(self.embeddings, 'model_name'):
+                    # For Google embeddings
+                    model_name = getattr(self.embeddings, 'model_name', '').lower()
+                    if '004' in model_name:
+                        embedding_size = 768
+                    elif '002' in model_name:
+                        embedding_size = 768
+                elif hasattr(self.embeddings, 'deployment'):
+                    # For Azure OpenAI embeddings
+                    deployment = getattr(self.embeddings, 'deployment', '').lower()
+                    if 'large' in deployment:
+                        embedding_size = 3072
+                    else:
+                        embedding_size = 1536
+
                 self.client.create_collection(
                     collection_name=self.collection_name,
                     vectors_config=models.VectorParams(
-                        size=768,  # Size for Google text-embedding-004 model
+                        size=embedding_size,
                         distance=models.Distance.COSINE
                     )
                 )
-                logger.info(f"Created collection: {self.collection_name}")
+                logger.info(f"Created collection: {self.collection_name} with vector size: {embedding_size}")
             else:
-                logger.info(f"Collection {self.collection_name} already exists")
+                # Check if the existing collection has the correct vector size
+                collection_info = self.client.get_collection(self.collection_name)
+                existing_size = collection_info.config.params.vectors.size
+
+                # Determine expected embedding size based on the model being used
+                expected_size = 1536  # Default for OpenAI text-embedding-3-small
+                if hasattr(self.embeddings, 'model'):
+                    model_name = getattr(self.embeddings, 'model', '').lower()
+                    if 'text-embedding-3-large' in model_name:
+                        expected_size = 3072  # text-embedding-3-large
+                    elif 'text-embedding-3-small' in model_name:
+                        expected_size = 1536  # text-embedding-3-small
+                    elif 'text-embedding-ada-002' in model_name:
+                        expected_size = 1536  # text-embedding-ada-002
+                    else:
+                        expected_size = 1536  # default for text-embedding-ada-002 or similar
+                elif hasattr(self.embeddings, 'model_name'):
+                    # For Google embeddings
+                    model_name = getattr(self.embeddings, 'model_name', '').lower()
+                    if '004' in model_name:
+                        expected_size = 768
+                    elif '002' in model_name:
+                        expected_size = 768
+                elif hasattr(self.embeddings, 'deployment'):
+                    # For Azure OpenAI embeddings
+                    deployment = getattr(self.embeddings, 'deployment', '').lower()
+                    if 'large' in deployment:
+                        expected_size = 3072
+                    else:
+                        expected_size = 1536
+
+                if existing_size != expected_size:
+                    logger.info(f"Collection {self.collection_name} exists with {existing_size} dimensions, but embeddings require {expected_size} dimensions. Recreating collection...")
+                    # Delete the existing collection and create a new one
+                    self.client.delete_collection(self.collection_name)
+
+                    self.client.create_collection(
+                        collection_name=self.collection_name,
+                        vectors_config=models.VectorParams(
+                            size=expected_size,
+                            distance=models.Distance.COSINE
+                        )
+                    )
+                    logger.info(f"Recreated collection: {self.collection_name} with vector size: {expected_size}")
+                else:
+                    logger.info(f"Collection {self.collection_name} already exists with correct vector size: {existing_size}")
         except Exception as e:
             logger.error(f"Error creating collection: {str(e)}")
             raise
