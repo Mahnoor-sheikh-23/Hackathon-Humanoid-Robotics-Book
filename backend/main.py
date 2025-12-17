@@ -136,6 +136,13 @@ async def query_endpoint(request: QueryRequest):
         logger.error(f"Error processing query: {str(e)}")
         raise HTTPException(status_code=500, detail=f"Error processing query: {str(e)}")
 
+@app.get("/ping")
+async def ping():
+    """
+    Simple ping endpoint to verify the API is running
+    """
+    return {"status": "ok"}
+
 @app.post("/health")
 async def health_check():
     """
