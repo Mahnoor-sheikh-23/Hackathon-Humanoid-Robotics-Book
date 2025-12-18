@@ -14,7 +14,7 @@ const Root = ({ children }) => {
         setRagApiUrl(config);
       } else {
         // Fallback to default
-        setRagApiUrl('http://localhost:8000');
+        setRagApiUrl('https://hackathon-humanoid-robotics-book-production.up.railway.app/');
       }
     }
   }, []);
