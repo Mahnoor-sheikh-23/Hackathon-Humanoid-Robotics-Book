@@ -28,7 +28,7 @@ const config = {
 
   // Custom fields for the RAG chatbot
   customFields: {
-    ragApiUrl: process.env.RAG_API_URL || 'http://localhost:8000', // Default to local backend
+    ragApiUrl: process.env.RAG_API_URL || 'https://hackathon-humanoid-robotics-book-production.up.railway.app/', // Default to local backend
   },
 
   // Even if you don't use internationalization, you can use this field to set
