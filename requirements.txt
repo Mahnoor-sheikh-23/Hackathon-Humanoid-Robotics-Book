@@ -2,7 +2,7 @@ fastapi>=0.104.1
 uvicorn[standard]>=0.24.0
 python-dotenv>=1.0.0
 qdrant-client>=1.9.0
-langchain==0.0.222
+langchain>=0.1.0
 langchain-openai>=0.1.0
 langchain-community>=0.0.30
 langchain-core>=0.1.0

@@ -7,7 +7,10 @@ import logging
 from src.rag.document_processor import DocumentProcessor
 from src.rag.qdrant_client import QdrantClient
 from langchain_openai import ChatOpenAI
-from langchain.chains import RetrievalQA
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.output_parsers import StrOutputParser
+from langchain_core.runnables import RunnablePassthrough, RunnableParallel
+from operator import itemgetter
 from langchain_core.prompts import PromptTemplate
 
 # Load environment variables
@@ -70,18 +73,24 @@ try:
 
     # Initialize QA chain lazily
     def get_qa_chain():
-        return RetrievalQA.from_chain_type(
-            llm=llm,
-            chain_type="stuff",
-            retriever=qdrant_client.as_retriever(),
-            return_source_documents=True,
-            chain_type_kwargs={
-                "prompt": PromptTemplate(
-                    input_variables=["context", "question"],
-                    template="You are an expert assistant for the Physical AI & Humanoid Robotics textbook. Use the following context to answer the question. If you don't know the answer, say 'I don't know based on the provided context.' Be concise and accurate.\n\nContext: {context}\n\nQuestion: {question}\n\nAnswer:"
-                )
-            }
+        # Create the prompt
+        template = """You are an expert assistant for the Physical AI & Humanoid Robotics textbook. Use the following context to answer the question. If you don't know the answer, say 'I don't know based on the provided context.' Be concise and accurate.\n\nContext: {context}\n\nQuestion: {question}\n\nAnswer:"""
+        prompt = ChatPromptTemplate.from_template(template)
+
+        # Create the output parser
+        output_parser = StrOutputParser()
+
+        # Create the RAG chain
+        retriever = qdrant_client.as_retriever()
+
+        # Create the chain using the newer langchain approach
+        setup_and_retrieval = RunnableParallel(
+            {"context": itemgetter("question") | retriever, "question": itemgetter("question")}
         )
+
+        chain = setup_and_retrieval | prompt | llm | output_parser
+
+        return chain
 
 except Exception as e:
     logger.error(f"Error initializing RAG components: {str(e)}")
@@ -110,12 +119,14 @@ async def query_endpoint(request: QueryRequest):
         # Get the QA chain (this will initialize it when first called)
         qa_chain = get_qa_chain()
 
-        # Use the QA chain to process the query
-        result = qa_chain({"query": request.query})
+        # Get the retriever separately to access source documents
+        retriever = qdrant_client.as_retriever()
 
-        # Extract response and source documents
-        response_text = result.get("result", "I couldn't find a relevant answer.")
-        source_docs = result.get("source_documents", [])
+        # Get relevant documents using the correct method for VectorStoreRetriever
+        source_docs = retriever.invoke(request.query)
+
+        # Process the query with the chain
+        response_text = qa_chain.invoke({"question": request.query})
 
         # Extract source information
         sources = []
