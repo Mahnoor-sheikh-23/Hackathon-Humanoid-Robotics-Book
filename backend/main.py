@@ -26,9 +26,7 @@ app = FastAPI(
 # Add CORS middleware
 app.add_middleware(
     CORSMiddleware,
-      allow_origins=[
-        "http://localhost:3000",  # for local dev
-        "https://mahnoor-sheikh-23.github.io/Hackathon-Humanoid-Robotics-Book/"  # GitHub Pages with project path
+      allow_origins=["*" # GitHub Pages with project path
     ],  # In production, replace with specific origins
     allow_credentials=True,
     allow_methods=["*"],
