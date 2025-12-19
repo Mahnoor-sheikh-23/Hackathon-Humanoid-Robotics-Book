@@ -35,7 +35,7 @@ const Chatbot = ({ ragApiUrl }) => {
 
     try {
       // Call the RAG API
-      const response = await fetch(`${ragApiUrl}/query`, {
+      const response = await fetch(`${ragApiUrl}query`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
