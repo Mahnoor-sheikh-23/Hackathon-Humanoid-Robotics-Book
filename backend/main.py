@@ -6,6 +6,10 @@ from pydantic import BaseModel
 import logging
 from src.rag.document_processor import DocumentProcessor
 from src.rag.qdrant_client import QdrantClient
+from src.auth.routes import router as auth_router
+from src.routers.chat import router as chat_router
+from src.routers.translation import router as translation_router
+from src.routers.personalization import router as personalization_router
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
@@ -23,11 +27,40 @@ app = FastAPI(
     version="1.0.0"
 )
 
+# Include authentication routes
+app.include_router(auth_router)
+
+# Include chat routes
+app.include_router(chat_router)
+
+# Include translation routes
+app.include_router(translation_router)
+
+# Include personalization routes
+app.include_router(personalization_router)
+
+# Initialize database tables on startup
+from src.auth.init_db import init_auth_db
+
+# Import models to ensure they are registered with the Base
+from src.models import User, Conversation, Message, UserPreference, Base
+from src.auth.database import Session
+
+# Import all models to ensure they're registered with SQLAlchemy before startup
+import src.models.user
+import src.models.conversation
+import src.models.message
+import src.models.user_preference
+
+@app.on_event("startup")
+def startup_event():
+    """Initialize database tables on startup"""
+    init_auth_db()
+
 # Add CORS middleware
 app.add_middleware(
     CORSMiddleware,
-      allow_origins=["*" # GitHub Pages with project path
-    ],  # In production, replace with specific origins
+    allow_origins=["*"],  # In production, replace with specific origins
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

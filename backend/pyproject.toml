@@ -5,7 +5,7 @@ description = "RAG API for Physical AI & Humanoid Robotics textbook"
 authors = ["Your Name <your.email@example.com>"]
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = "^3.10,<3.12"
 fastapi = "^0.104.1"
 uvicorn = "^0.24.0"
 python-dotenv = "^1.0.0"
@@ -25,6 +25,9 @@ pypdf = "^4.0.0"
 beautifulsoup4 = "^4.12.2"
 lxml = "^5.0.0"
 pandas = "^2.1.0"
+bcrypt = "^4.0.1"
+python-jose = {version = "^3.3.0", extras = ["cryptography"]}
+passlib = {version = "^1.7.4", extras = ["bcrypt"]}
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.4.0"

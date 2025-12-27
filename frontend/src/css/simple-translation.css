@@ -1,0 +1,55 @@
+/* RTL layout support - only affects content, not layout */
+[dir="rtl"] {
+  direction: rtl;
+}
+
+[dir="rtl"] .markdown,
+[dir="rtl"] .markdown *,
+[dir="rtl"] article,
+[dir="rtl"] article * {
+  direction: rtl;
+  text-align: right;
+}
+
+/* Ensure code blocks remain LTR in RTL layout */
+[dir="rtl"] code,
+[dir="rtl"] pre,
+[dir="rtl"] .codeBlockContainer,
+[dir="rtl"] .prism-code {
+  direction: ltr;
+  text-align: left;
+}
+
+/* Keep layout elements unchanged - NO position changes for sidebars */
+[dir="rtl"] .sidebar,
+[dir="rtl"] .menu,
+[dir="rtl"] .navbar,
+[dir="rtl"] nav,
+[dir="rtl"] .pagination-nav,
+[dir="rtl"] .table-of-contents,
+[dir="rtl"] .sidebar-container,
+[dir="rtl"] .docSidebarContainer,
+[dir="rtl"] .theme-doc-sidebar {
+  direction: ltr !important; /* Force layout elements to stay LTR */
+  right: auto !important; /* Prevent RTL from swapping positions */
+  left: auto !important; /* Prevent RTL from swapping positions */
+}
+
+/* Ensure main content area doesn't affect layout */
+[dir="rtl"] main,
+[dir="rtl"] .main-wrapper,
+[dir="rtl"] .container,
+[dir="rtl"] .row {
+  direction: ltr; /* Keep main layout structure unchanged */
+}
+
+/* Override any potential position swaps */
+.sidebar {
+  right: 0 !important;
+  left: auto !important;
+}
+
+.theme-doc-sidebar {
+  border-right: 1px solid var(--ifm-toc-border-color) !important;
+  border-left: none !important;
+}

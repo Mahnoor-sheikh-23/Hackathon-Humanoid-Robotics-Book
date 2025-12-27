@@ -29,7 +29,7 @@
 - [x] T003 [P] Configure Docusaurus `frontend/sidebars.js` for module/chapter hierarchy
 - [x] T004 Initialize FastAPI project in `backend/`
 - [x] T005 [P] Configure linting (Black, ESLint) and formatting (Prettier) for `backend/` and `frontend/`
-- [ ] T006 [P] Setup `.env.example` and load environment variables in `backend/`
+- [X] T006 [P] Setup `.env.example` and load environment variables in `backend/`
 
 ---
 
@@ -39,14 +39,14 @@
 
 **⚠️ CRITICAL**: No user story work can begin until this phase is complete
 
-- [ ] T007 Setup Neon Serverless Postgres database connection in `backend/src/db.py`
-- [ ] T008 [P] Define `users`, `conversations`, `messages`, `user_preferences` tables in `backend/src/models/` and apply migrations
-- [ ] T009 Setup Qdrant Cloud connection in `backend/src/vector_db.py`
-- [ ] T010 Implement Better-Auth SDK integration for basic signup/signin in `backend/src/auth.py`
-- [ ] T011 Implement base logging and error handling in `backend/src/main.py`
-- [ ] T012 Configure CORS for `backend/` in `backend/src/main.py`
-- [ ] T013 Implement offline content ingestion pipeline (chunking, embedding, Qdrant storage) in `scripts/ingest_content.py`
-- [ ] T014 Set up automated GitHub Actions for Docusaurus deployment in `.github/workflows/deploy.yml`
+- [X] T007 Setup Neon Serverless Postgres database connection in `backend/src/db.py`
+- [X] T008 [P] Define `users`, `conversations`, `messages`, `user_preferences` tables in `backend/src/models/` and apply migrations
+- [X] T009 Setup Qdrant Cloud connection in `backend/src/vector_db.py`
+- [X] T010 Implement Better-Auth SDK integration for basic signup/signin in `backend/src/auth.py`
+- [X] T011 Implement base logging and error handling in `backend/src/main.py`
+- [X] T012 Configure CORS for `backend/` in `backend/src/main.py`
+- [X] T013 Implement offline content ingestion pipeline (chunking, embedding, Qdrant storage) in `scripts/ingest_content.py`
+- [X] T014 Set up automated GitHub Actions for Docusaurus deployment in `.github/workflows/deploy.yml`
 
 **Checkpoint**: Foundation ready - user story implementation can now begin in parallel
 
@@ -60,25 +60,25 @@
 
 ### Implementation for User Story 1
 
-- [ ] T015 [P] [US1] Create Docusaurus `docs/introduction/` folder and initial `index.md`, `ch1_foundations.md`, `ch2_robot_anatomy.md`
-- [ ] T016 [P] [US1] Create Docusaurus `docs/module1-ros2/` folder and initial `ch3_ros2_core.md`, `ch4_rclpy.md`, `ch5_urdf.md`, `ch6_launch_files.md`
-- [ ] T017 [P] [US1] Create Docusaurus `docs/module2-digital-twin/` folder and initial `ch7_gazebo_intro.md`, `ch8_sensors_sim.md`, `ch9_interactive_envs.md`
-- [ ] T018 [P] [US1] Create Docusaurus `docs/module3-nvidia-isaac/` folder and initial `ch10_isaac_sim.md`, `ch11_isaac_ros_vslam.md`, `ch12_nav2.md`, `ch13_rl_isaac_gym.md`, `ch14_sim_to_real.md`
-- [ ] T019 [P] [US1] Create Docusaurus `docs/module4-vla/` folder and initial `ch15_whisper_llm.md`, `ch16_llm_planning.md`, `ch17_multimodal.md`
-- [ ] T020 [P] [US1] Create Docusaurus `docs/capstone/` folder and initial `ch18_integration.md`, `ch19_capstone_project.md`
-- [ ] T021 [P] [US1] Create Docusaurus `docs/appendices/` folder and initial `appA_hardware.md`, `appB_jetson_setup.md`, `appC_realsense_setup.md`, `appD_linux_ros2_install.md`, `appE_glossary.md`, `appF_ros2_cheatsheet.md`, `appG_python_cheatsheet.md`
-- [ ] T022 [US1] Implement Chapter Content Generation Subagent in `backend/src/agents/chapter_gen_agent.py`
-- [ ] T023 [US1] Implement Code Example Verification Subagent in `backend/src/agents/code_verify_agent.py`
-- [ ] T024 [US1] Implement Exercise Generation Subagent in `backend/src/agents/exercise_gen_agent.py`
-- [ ] T025 [P] [US1] Populate Front Matter chapters (`frontend/docs/introduction/index.md`, etc.)
-- [ ] T026 [P] [US1] Populate Weeks 1-2 chapters (`frontend/docs/introduction/ch*.md`)
-- [ ] T027 [P] [US1] Populate Weeks 3-5 chapters (`frontend/docs/module1-ros2/ch*.md`)
-- [ ] T028 [P] [US1] Populate Weeks 6-7 chapters (`frontend/docs/module2-digital-twin/ch*.md`)
-- [ ] T029 [P] [US1] Populate Weeks 8-10 chapters (`frontend/docs/module3-nvidia-isaac/ch*.md`)
-- [ ] T030 [P] [US1] Populate Weeks 11-12 chapters (`frontend/docs/module4-vla/ch*.md`)
-- [ ] T031 [P] [US1] Populate Week 13 chapters (`frontend/docs/capstone/ch*.md`)
-- [ ] T032 [P] [US1] Populate Appendices (`frontend/docs/appendices/app*.md`)
-- [ ] T033 [US1] Verify all Python code examples (Python 3.10+) within `docs/` content
+- [X] T015 [P] [US1] Create Docusaurus `docs/introduction/` folder and initial `index.md`, `ch1_foundations.md`, `ch2_robot_anatomy.md`
+- [x] T016 [P] [US1] Create Docusaurus `docs/module1-ros2/` folder and initial `ch3_ros2_core.md`, `ch4_rclpy.md`, `ch5_urdf.md`, `ch6_launch_files.md`
+- [x] T017 [P] [US1] Create Docusaurus `docs/module2-digital-twin/` folder and initial `ch7_gazebo_intro.md`, `ch8_sensors_sim.md`, `ch9_interactive_envs.md`
+- [X] T018 [P] [US1] Create Docusaurus `docs/module3-nvidia-isaac/` folder and initial `ch10_isaac_sim.md`, `ch11_isaac_ros_vslam.md`, `ch12_nav2.md`, `ch13_rl_isaac_gym.md`, `ch14_sim_to_real.md`
+- [X] T019 [P] [US1] Create Docusaurus `docs/module4-vla/` folder and initial `ch15_whisper_llm.md`, `ch16_llm_planning.md`, `ch17_multimodal.md`
+- [X] T020 [P] [US1] Create Docusaurus `docs/capstone/` folder and initial `ch18_integration.md`, `ch19_capstone_project.md`
+- [X] T021 [P] [US1] Create Docusaurus `docs/appendices/` folder and initial `appA_hardware.md`, `appB_jetson_setup.md`, `appC_realsense_setup.md`, `appD_linux_ros2_install.md`, `appE_glossary.md`, `appF_ros2_cheatsheet.md`, `appG_python_cheatsheet.md`
+- [X] T022 [US1] Implement Chapter Content Generation Subagent in `backend/src/agents/chapter_gen_agent.py`
+- [X] T023 [US1] Implement Code Example Verification Subagent in `backend/src/agents/code_verify_agent.py`
+- [X] T024 [US1] Implement Exercise Generation Subagent in `backend/src/agents/exercise_gen_agent.py`
+- [X] T025 [P] [US1] Populate Front Matter chapters (`frontend/docs/introduction/index.md`, etc.)
+- [X] T026 [P] [US1] Populate Weeks 1-2 chapters (`frontend/docs/introduction/ch*.md`)
+- [X] T027 [P] [US1] Populate Weeks 3-5 chapters (`frontend/docs/module1-ros2/ch*.md`)
+- [X] T028 [P] [US1] Populate Weeks 6-7 chapters (`frontend/docs/module2-digital-twin/ch*.md`)
+- [X] T029 [P] [US1] Populate Weeks 8-10 chapters (`frontend/docs/module3-nvidia-isaac/ch*.md`)
+- [X] T030 [P] [US1] Populate Weeks 11-12 chapters (`frontend/docs/module4-vla/ch*.md`)
+- [x] T031 [P] [US1] Populate Week 13 chapters (`frontend/docs/capstone/ch*.md`)
+- [X] T032 [P] [US1] Populate Appendices (`frontend/docs/appendices/app*.md`)
+- [X] T033 [US1] Verify all Python code examples (Python 3.10+) within `docs/` content
 
 **Checkpoint**: At this point, User Story 1 should be fully functional and testable independently
 
@@ -92,21 +92,21 @@
 
 ### Implementation for User Story 2
 
-- [ ] T034 [P] [US2] Implement frontend chat widget React component in `frontend/src/components/ChatWidget.js` (or `.tsx`)
-- [ ] T035 [P] [US2] Implement FastAPI `/chat` endpoint for sending messages in `backend/src/routers/chat.py`
-- [ ] T036 [P] [US2] Implement FastAPI `/chat/selected` endpoint for selected text questions in `backend/src/routers/chat.py`
-- [ ] T037 [P] [US2] Implement FastAPI `/chat/history` endpoint for conversation history in `backend/src/routers/chat.py`
-- [ ] T038 [P] [US2] Implement FastAPI `/chat/clear` endpoint for clearing conversation in `backend/src/routers/chat.py`
-- [ ] T039 [US2] Integrate OpenAI Agents SDK or ChatKit SDK in `backend/src/services/chatbot_service.py`
-- [ ] T040 [US2] Integrate Qdrant vector search for retrieval in `backend/src/services/chatbot_service.py`
-- [ ] T041 [US2] Implement LLM for response generation and source citation in `backend/src/services/chatbot_service.py`
-- [ ] T042 [US2] Implement typing indicators in `frontend/src/components/ChatWidget.js`
-- [ ] T043 [US2] Implement conversation history display in `frontend/src/components/ChatWidget.js`
-- [ ] T044 [US2] Implement clear/reset conversation button in `frontend/src/components/ChatWidget.js`
-- [ ] T045 [US2] Implement error handling and rate limiting for chat endpoints in `backend/src/routers/chat.py`
-- [ ] T046 [US2] Test chatbot retrieval correctness via `backend/tests/test_chatbot.py`
-- [ ] T047 [US2] Test selected-text-only answering via `backend/tests/test_chatbot.py`
-- [ ] T048 [US2] Test hallucination prevention via `backend/tests/test_chatbot.py`
+- [X] T034 [P] [US2] Implement frontend chat widget React component in `frontend/src/components/ChatWidget.js` (or `.tsx`)
+- [X] T035 [P] [US2] Implement FastAPI `/chat` endpoint for sending messages in `backend/src/routers/chat.py`
+- [X] T036 [P] [US2] Implement FastAPI `/chat/selected` endpoint for selected text questions in `backend/src/routers/chat.py`
+- [X] T037 [P] [US2] Implement FastAPI `/chat/history` endpoint for conversation history in `backend/src/routers/chat.py`
+- [X] T038 [P] [US2] Implement FastAPI `/chat/clear` endpoint for clearing conversation in `backend/src/routers/chat.py`
+- [X] T039 [US2] Integrate OpenAI Agents SDK or ChatKit SDK in `backend/src/services/chatbot_service.py`
+- [X] T040 [US2] Integrate Qdrant vector search for retrieval in `backend/src/services/chatbot_service.py`
+- [X] T041 [US2] Implement LLM for response generation and source citation in `backend/src/services/chatbot_service.py`
+- [X] T042 [US2] Implement typing indicators in `frontend/src/components/ChatWidget.js`
+- [X] T043 [US2] Implement conversation history display in `frontend/src/components/ChatWidget.js`
+- [X] T044 [US2] Implement clear/reset conversation button in `frontend/src/components/ChatWidget.js`
+- [X] T045 [US2] Implement error handling and rate limiting for chat endpoints in `backend/src/routers/chat.py`
+- [X] T046 [US2] Test chatbot retrieval correctness via `backend/tests/test_chatbot.py`
+- [X] T047 [US2] Test selected-text-only answering via `backend/tests/test_chatbot.py`
+- [X] T048 [US2] Test hallucination prevention via `backend/tests/test_chatbot.py`
 
 **Checkpoint**: At this point, User Stories 1 AND 2 should both work independently
 
@@ -120,18 +120,18 @@
 
 ### Implementation for User Story 3
 
-- [ ] T049 [US3] Configure Docusaurus for clean, modern, educational design in `frontend/docusaurus.config.js` and `frontend/src/css/custom.css`
-- [ ] T050 [US3] Implement Docusaurus navigation sidebar in `frontend/sidebars.js`
-- [ ] T051 [US3] Implement Docusaurus search functionality in `frontend/docusaurus.config.js`
-- [ ] T052 [US3] Ensure Docusaurus site is mobile-responsive (`frontend/src/css/custom.css` and React components)
-- [ ] T053 [US3] Verify page load times (under 3 seconds) through manual testing and Lighthouse
-- [ ] T054 [US3] Implement proper meta tags for SEO in `frontend/docusaurus.config.js`
-- [ ] T055 [US3] Design and implement homepage in `frontend/src/pages/index.js` (or `.tsx`)
-- [ ] T056 [US3] Configure GitHub Actions for automated deployment to GitHub Pages (`.github/workflows/deploy.yml`)
-- [ ] T057 [US3] Configure custom domain support (optional) in `frontend/static/CNAME`
-- [ ] T058 [US3] Ensure HTTPS is enabled (GitHub Pages default) - verification task
-- [ ] T059 [US3] Implement proper 404 error handling in `frontend/src/pages/404.js` (or `.tsx`)
-- [ ] T060 [US3] Configure clean URL structure (Docusaurus default) - verification task
+- [X] T049 [US3] Configure Docusaurus for clean, modern, educational design in `frontend/docusaurus.config.js` and `frontend/src/css/custom.css`
+- [X] T050 [US3] Implement Docusaurus navigation sidebar in `frontend/sidebars.js`
+- [X] T051 [US3] Implement Docusaurus search functionality in `frontend/docusaurus.config.js`
+- [X] T052 [US3] Ensure Docusaurus site is mobile-responsive (`frontend/src/css/custom.css` and React components)
+- [X] T053 [US3] Verify page load times (under 3 seconds) through manual testing and Lighthouse
+- [X] T054 [US3] Implement proper meta tags for SEO in `frontend/docusaurus.config.js`
+- [X] T055 [US3] Design and implement homepage in `frontend/src/pages/index.js` (or `.tsx`)
+- [X] T056 [US3] Configure GitHub Actions for automated deployment to GitHub Pages (`.github/workflows/deploy.yml`)
+- [X] T057 [US3] Configure custom domain support (optional) in `frontend/static/CNAME`
+- [X] T058 [US3] Ensure HTTPS is enabled (GitHub Pages default) - verification task
+- [X] T059 [US3] Implement proper 404 error handling in `frontend/src/pages/404.js` (or `.tsx`)
+- [X] T060 [US3] Configure clean URL structure (Docusaurus default) - verification task
 
 **Checkpoint**: All user stories should now be independently functional
 
@@ -145,16 +145,16 @@
 
 ### Implementation for Bonus 2
 
-- [ ] T061 [P] [US-Auth] Implement Better-Auth signup forms (name, email, password, background questions) in `frontend/src/components/Auth/Signup.js`
-- [ ] T062 [P] [US-Auth] Implement Better-Auth signin forms (email, password) in `frontend/src/components/Auth/Signin.js`
-- [ ] T063 [US-Auth] Integrate Better-Auth SDK for signup/signin in `backend/src/routers/auth.py`
-- [ ] T064 [US-Auth] Store user profile data in Neon Postgres `users` table via `backend/src/models/user.py`
-- [ ] T065 [US-Auth] Implement email verification via Better-Auth in `backend/src/auth.py`
-- [ ] T066 [P] [US-Auth] Implement "remember me" functionality in `frontend/src/components/Auth/Signin.js`
-- [ ] T067 [P] [US-Auth] Implement password reset functionality in `frontend/src/components/Auth/ResetPassword.js`
-- [ ] T068 [P] [US-Auth] Implement social login (Google, GitHub) (optional) in `frontend/src/components/Auth/SocialLogin.js`
-- [ ] T069 [US-Auth] Implement user dashboard (learning progress, bookmarks, completed exercises, notes) in `frontend/src/pages/dashboard.js`
-- [ ] T070 [US-Auth] Store learning progress, bookmarks, completed exercises, notes in Neon Postgres tables (`backend/src/models/user_progress.py`, `backend/src/models/user_bookmarks.py`, etc.)
+- [X] T061 [P] [US-Auth] Implement Better-Auth signup forms (name, email, password, background questions) in `frontend/src/components/Auth/Signup.js`
+- [X] T062 [P] [US-Auth] Implement Better-Auth signin forms (email, password) in `frontend/src/components/Auth/Signin.js`
+- [X] T063 [US-Auth] Integrate Better-Auth SDK for signup/signin in `backend/src/routers/auth.py`
+- [X] T064 [US-Auth] Store user profile data in Neon Postgres `users` table via `backend/src/models/user.py`
+- [X] T065 [US-Auth] Implement email verification via Better-Auth in `backend/src/auth.py`
+- [X] T066 [P] [US-Auth] Implement "remember me" functionality in `frontend/src/components/Auth/Signin.js`
+- [X] T067 [P] [US-Auth] Implement password reset functionality in `frontend/src/components/Auth/ResetPassword.js`
+- [X] T068 [P] [US-Auth] Implement social login (Google, GitHub) (optional) in `frontend/src/components/Auth/SocialLogin.js`
+- [X] T069 [US-Auth] Implement user dashboard (learning progress, bookmarks, completed exercises, notes) in `frontend/src/pages/dashboard.js`
+- [X] T070 [US-Auth] Store learning progress, bookmarks, completed exercises, notes in Neon Postgres tables (`backend/src/models/user_progress.py`, `backend/src/models/user_bookmarks.py`, etc.)
 
 ---
 
@@ -166,13 +166,13 @@
 
 ### Implementation for Bonus 3
 
-- [ ] T071 [P] [US-Personalize] Implement "Personalize This Chapter" button in `frontend/src/components/PersonalizationButton.js`
-- [ ] T072 [US-Personalize] Implement FastAPI endpoint for personalization in `backend/src/routers/personalization.py`
-- [ ] T073 [US-Personalize] Integrate LLM for content rewriting based on user profile in `backend/src/services/personalization_service.py`
-- [ ] T074 [US-Personalize] Implement caching for personalized content in Neon Postgres `user_preferences` table
-- [ ] T075 [US-Personalize] Implement frontend toggle for original vs. personalized content in `frontend/src/components/PersonalizationButton.js`
-- [ ] T076 [US-Personalize] Test personalization logic for different user profiles in `backend/tests/test_personalization.py`
-- [ ] T077 [US-Personalize] Test cache invalidation for personalized content in `backend/tests/test_personalization.py`
+- [X] T071 [P] [US-Personalize] Implement "Personalize This Chapter" button in `frontend/src/components/PersonalizationButton.js`
+- [X] T072 [US-Personalize] Implement FastAPI endpoint for personalization in `backend/src/routers/personalization.py`
+- [X] T073 [US-Personalize] Integrate LLM for content rewriting based on user profile in `backend/src/services/personalization_service.py`
+- [X] T074 [US-Personalize] Implement caching for personalized content in Neon Postgres `user_preferences` table
+- [X] T075 [US-Personalize] Implement frontend toggle for original vs. personalized content in `frontend/src/components/PersonalizationButton.js`
+- [X] T076 [US-Personalize] Test personalization logic for different user profiles in `backend/tests/test_personalization.py`
+- [X] T077 [US-Personalize] Test cache invalidation for personalized content in `backend/tests/test_personalization.py`
 
 ---
 
@@ -184,12 +184,12 @@
 
 ### Implementation for Bonus 4
 
-- [ ] T078 [P] [US-Urdu] Implement "اردو میں پڑھیں (Read in Urdu)" button in `frontend/src/components/TranslationButton.js`
-- [ ] T079 [US-Urdu] Implement FastAPI endpoint for Urdu translation in `backend/src/routers/translation.py`
-- [ ] T080 [US-Urdu] Integrate LLM (or Google Translate API/DeepL) for translation in `backend/src/services/translation_service.py`
-- [ ] T081 [US-Urdu] Implement caching for translated content in Neon Postgres `user_preferences` table
-- [ ] T082 [US-Urdu] Implement frontend toggle for English vs. Urdu content in `frontend/src/components/TranslationButton.js`
-- [ ] T083 [US-Urdu] Test semantic preservation and technical correctness of Urdu translation in `backend/tests/test_translation.py`
+- [X] T078 [P] [US-Urdu] Implement "اردو میں پڑھیں (Read in Urdu)" button in `frontend/src/components/TranslationButton.js`
+- [X] T079 [US-Urdu] Implement FastAPI endpoint for Urdu translation in `backend/src/routers/translation.py`
+- [X] T080 [US-Urdu] Integrate LLM (or Google Translate API/DeepL) for translation in `backend/src/services/translation_service.py`
+- [X] T081 [US-Urdu] Implement caching for translated content in Neon Postgres `user_preferences` table
+- [X] T082 [US-Urdu] Implement frontend toggle for English vs. Urdu content in `frontend/src/components/TranslationButton.js`
+- [x] T083 [US-Urdu] Test semantic preservation and technical correctness of Urdu translation in `backend/tests/test_translation.py`
 
 ---
 
@@ -201,11 +201,11 @@
 
 ### Implementation for Bonus 1
 
-- [ ] T084 [US-Agents] Document Chapter Content Generation Agent in `docs/developer/agents/chapter_gen.md`
-- [ ] T085 [US-Agents] Document Code Example Verification Agent in `docs/developer/agents/code_verify.md`
-- [ ] T086 [US-Agents] Document Exercise Generation Agent in `docs/developer/agents/exercise_gen.md`
-- [ ] T087 [P] [US-Agents] Document Agent Skills (chapter-gen, code-verify, exercise-gen, glossary-extractor, diagram-assist, citation-checker) in `docs/developer/skills/`
-- [ ] T088 [US-Agents] Ensure evidence of using subagents is captured during development (e.g., in PHRs or specific logs)
+- [X] T084 [US-Agents] Document Chapter Content Generation Agent in `docs/developer/agents/chapter_gen.md`
+- [X] T085 [US-Agents] Document Code Example Verification Agent in `docs/developer/agents/code_verify.md`
+- [X] T086 [US-Agents] Document Exercise Generation Agent in `docs/developer/agents/exercise_gen.md`
+- [X] T087 [P] [US-Agents] Document Agent Skills (chapter-gen, code-verify, exercise-gen, glossary-extractor, diagram-assist, citation-checker) in `docs/developer/skills/`
+- [X] T088 [US-Agents] Ensure evidence of using subagents is captured during development (e.g., in PHRs or specific logs)
 
 ---
 
@@ -213,11 +213,11 @@
 
 **Purpose**: Improvements that affect multiple user stories
 
-- [ ] T089 Documentation updates for `README.md`, API documentation (OpenAPI/Swagger auto-generated via FastAPI)
-- [ ] T090 Code cleanup and refactoring across `backend/` and `frontend/`
-- [ ] T091 Performance optimization (frontend asset loading, backend query optimization)
-- [ ] T092 Security hardening (input validation, dependency scanning, secret management)
-- [ ] T093 Final review of all quality validation criteria
+- [X] T089 Documentation updates for `README.md`, API documentation (OpenAPI/Swagger auto-generated via FastAPI)
+- [X] T090 Code cleanup and refactoring across `backend/` and `frontend/`
+- [X] T091 Performance optimization (frontend asset loading, backend query optimization)
+- [X] T092 Security hardening (input validation, dependency scanning, secret management)
+- [X] T093 Final review of all quality validation criteria
 
 ---
 

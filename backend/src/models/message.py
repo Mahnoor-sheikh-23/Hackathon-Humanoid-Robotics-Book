@@ -2,7 +2,7 @@ import sqlalchemy
 from sqlalchemy import Column, Integer, String, DateTime, ForeignKey, Text
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
-from .user import Base # Import Base from user.py
+from .base import Base
 
 class Message(Base):
     __tablename__ = "messages"
@@ -13,7 +13,7 @@ class Message(Base):
     content = Column(Text, nullable=False)
     timestamp = Column(DateTime, server_default=func.now())
 
-    # Define relationship with Conversation
+    # Define relationship with Conversation using string reference to avoid circular imports
     conversation = relationship("Conversation", back_populates="messages")
 
 # Add back_populates to Conversation model if not already present

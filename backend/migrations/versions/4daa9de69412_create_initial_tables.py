@@ -1,7 +1,7 @@
 """Create initial tables
 
 Revision ID: 4daa9de69412
-Revises: 
+Revises:
 Create Date: 2025-12-05 17:33:00.435870
 
 """
@@ -24,13 +24,21 @@ def upgrade() -> None:
     op.create_table('users',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('email', sa.String(), nullable=False),
+    sa.Column('username', sa.String(), nullable=False),  # Added username field
     sa.Column('password_hash', sa.String(), nullable=False),
     sa.Column('name', sa.String(), nullable=True),
     sa.Column('profile_data', sa.JSON(), nullable=True),
     sa.Column('created_at', sa.DateTime(), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=True),
+    sa.Column('updated_at', sa.DateTime(), nullable=True),  # Added updated_at field
+    sa.Column('is_active', sa.Boolean(), default=True),  # Added is_active field
+    sa.Column('programming_experience', sa.Text(), nullable=True),  # Added programming_experience field
+    sa.Column('robotics_knowledge', sa.Text(), nullable=True),  # Added robotics_knowledge field
+    sa.Column('hardware_availability', sa.Text(), nullable=True),  # Added hardware_availability field
+    sa.Column('profile_completed', sa.Boolean(), default=False),  # Added profile_completed field
     sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_users_email'), 'users', ['email'], unique=True)
+    op.create_index(op.f('ix_users_username'), 'users', ['username'], unique=True)  # Added index for username
     op.create_index(op.f('ix_users_id'), 'users', ['id'], unique=False)
     op.create_table('conversations',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -73,6 +81,7 @@ def downgrade() -> None:
     op.drop_table('user_preferences')
     op.drop_index(op.f('ix_conversations_id'), table_name='conversations')
     op.drop_table('conversations')
+    op.drop_index(op.f('ix_users_username'), table_name='users')  # Drop username index
     op.drop_index(op.f('ix_users_id'), table_name='users')
     op.drop_index(op.f('ix_users_email'), table_name='users')
     op.drop_table('users')

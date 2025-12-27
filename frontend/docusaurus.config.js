@@ -60,6 +60,10 @@ const config = {
     ],
   ],
 
+  plugins: [
+    './src/plugins/docusaurus-plugin-protected-routes',
+  ],
+
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
@@ -73,11 +77,6 @@ const config = {
           
         },
         items: [
-          {
-            to: '/',
-            label: 'Home',
-            position: 'left',
-          },
           {
             to: '/docs/module1-ros2/ch3_ros2_core',
             label: 'Reading',
@@ -98,11 +97,7 @@ const config = {
             label: 'About',
             position: 'left',
           },
-          {
-            href: 'https://github.com/Mahnoor-sheikh-23/Humanoid-robotics-book', // Link to your GitHub repo
-            label: 'GitHub',
-            position: 'right',
-          },
+          
         ],
       },
       footer: {

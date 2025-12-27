@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Welcome to Physical AI & Humanoid Robotics
 
-Welcome to the **Physical AI & Humanoid Robotics Handbook**, your comprehensive guide to building, understanding, and experimenting with intelligent robots and autonomous systems.  
+Welcome to the **Physical AI & Humanoid Robotics Handbook**, your comprehensive guide to building, understanding, and experimenting with intelligent robots and autonomous systems.
 
 This handbook is designed for **students, enthusiasts, and professionals** who want to explore the intersection of **artificial intelligence, robotics, and physical agents**. Whether you are a beginner or an advanced learner, this guide offers **hands-on modules, real-world examples, and step-by-step exercises** to help you master the concepts.
 
@@ -35,9 +35,9 @@ Throughout this book, you will dive deep into:
 
 ## Who Should Use This Handbook
 
-- **Students** seeking hands-on AI & robotics experience.  
-- **Researchers** interested in humanoid robotics and physical AI systems.  
-- **Hobbyists & Makers** aiming to build autonomous robots with AI capabilities.  
+- **Students** seeking hands-on AI & robotics experience.
+- **Researchers** interested in humanoid robotics and physical AI systems.
+- **Hobbyists & Makers** aiming to build autonomous robots with AI capabilities.
 
 ---
 

@@ -10,7 +10,10 @@ from sqlalchemy import engine_from_config
 from sqlalchemy import pool
 
 from alembic import context
-from backend.src.models.user import Base # Import Base from one of your models
+from backend.src.models.base import Base # Import Base from shared base module
+
+# Import all models to ensure they are registered with the Base for Alembic
+from backend.src.models import User, Conversation, Message, UserPreference
 
 load_dotenv()
 

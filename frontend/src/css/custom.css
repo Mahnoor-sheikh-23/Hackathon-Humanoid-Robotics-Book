@@ -9,6 +9,10 @@
 
 /* Set Inter font */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+/* Import simple translation styles */
+@import url('./simple-translation.css');
+/* Import auth styles */
+@import url('./auth.css');
 
 :root {
   --ifm-font-family-base: 'Inter', sans-serif;
@@ -1006,3 +1010,4 @@ html[data-theme='light'] .markdown h6 {
     max-width: 90%;
   }
 }
+
